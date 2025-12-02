@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4. Ayımız Kutlu Olsun ❤️</title>
+<style>
+body { margin:0; font-family:"Poppins",sans-serif; background:linear-gradient(135deg,#ff8fb3,#ffd1e6); overflow-x:hidden; }
+.fade { animation: fadein 1.1s ease; }
+@keyframes fadein { from{opacity:0; transform:translateY(15px);} to{opacity:1; transform:translateY(0);} }
+.screen { display:none; padding:20px; width:100%; max-width:480px; margin:auto; }
+.active { display:block; }
+#intro { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; color:white; background:linear-gradient(135deg,#ff5a88,#ff98c7); cursor:pointer; text-align:center; padding:20px; }
+#intro h1 { font-size:36px; text-shadow:0 0 25px white; }
+section { background:white; margin:20px 0; padding:20px; border-radius:20px; box-shadow:0 0 25px rgba(0,0,0,0.1); }
+.timeline-item { padding:12px; margin:10px 0; background:#ffe6f1; border-left:6px solid #ff3f7a; border-radius:12px; font-size:16px; }
+.btn { padding:14px 22px; border:none; border-radius:12px; background:#ff4f87; color:white; font-size:16px; display:block; margin:10px auto; width:100%; cursor:pointer; transition:0.2s; }
+.btn:hover { background:#ff2d6c; }
+#resultBox { display:none; padding:20px; border-radius:20px; color:white; font-size:18px; text-align:center; margin-top:20px; }
+#percent { font-size:24px; font-weight:bold; text-align:center; }
+#triple, #secret2, #noteForYou, #loveNote, #kissNote { display:none; font-size:16px; line-height:1.5; }
+#triple { background:#ffe8f3; padding:15px; border-radius:15px; }
+#secret2 { background:#fff0f7; padding:15px; border-radius:15px; }
+#noteForYou { background:#ffe8f3; padding:15px; border-radius:15px; }
+#loveNote { background:#ffe6f1; padding:18px; border-radius:20px; }
+#kissNote { background:#ffdae1; padding:18px; border-radius:20px; text-align:center; color:#d9006c; font-size:18px; }
+.heart { position:fixed; top:-10px; color:#ff1e5c; font-size:20px; animation:fall 4s linear forwards; opacity:0.8; }
+@keyframes fall { to { transform:translateY(110vh); opacity:0; } }
+
+/* Mobile Optimizations */
+@media(max-width:480px){
+  #intro h1 { font-size:30px; }
+  section { padding:18px; }
+  .btn { font-size:15px; padding:12px; }
+}
+</style>
+</head>
+<body>
+<audio id="music" loop autoplay>
+<source src="https://cdn.pixabay.com/download/audio/2023/03/14/audio_4d84e9197e.mp3?filename=romantic-piano-14475.mp3" type="audio/mpeg">
+</audio>
+
+<div id="intro" onclick="enterSite()">
+<h1>Hoş geldin aşkım ❤️</h1>
+<p>Bir kez dokun… içeride kalbini titretecek şeyler var.</p>
+</div>
+
+<div id="main" class="screen">
+<section class="fade">
+<h2>📅 Zaman Tünelimiz</h2>
+<div class="timeline-item"><b>4 Temmuz:</b> Tanıştığımız o an… kalbime bir şeyler dokundu.</div>
+<div class="timeline-item"><b>24 Ağustos:</b> Konuşmaya başladığımız gün… içimde bir ışık yandı.</div>
+<div class="timeline-item"><b>18 Ekim:</b> İlk buluşma… göz göze geldiğimiz o an dünyam değişti.</div>
+</section>
+
+<section class="fade">
+<h2>💞 Sevgilim beni ne kadar seviyor testi</h2>
+<b>1) Onu görünce içinde ne oluyor?</b>
+<button class="btn" onclick="addScore(10)">A) Hafif bir heyecan</button>
+<button class="btn" onclick="addScore(20)">B) Gülümsüyorum</button>
+<button class="btn" onclick="addScore(30)">C) İçim ısınıyor</button>
+<button class="btn" onclick="addScore(40)">D) Kalbim yerinden çıkacak gibi oluyor</button>
+
+<b>2) Gün içinde onu ne kadar düşünüyorsun?</b>
+<button class="btn" onclick="addScore(10)">A) Ara sıra</button>
+<button class="btn" onclick="addScore(20)">B) Sık sık</button>
+<button class="btn" onclick="addScore(30)">C) Çok fazla</button>
+<button class="btn" onclick="addScore(40)">D) Sürekli, kaçış yok 😭❤️</button>
+
+<b>3) Trip attığında ne hissediyorsun?</b>
+<button class="btn" onclick="addScore(10)">A) Kafa karışıyor</button>
+<button class="btn" onclick="addScore(20)">B) Üzülüyorum</button>
+<button class="btn" onclick="addScore(30)">C) Hemen gönlünü almak istiyorum</button>
+<button class="btn" onclick="addScore(40)">D) Tripi bile tatlı geliyor…</button>
+
+<b>4) Onunla gelecek hayalin nasıl?</b>
+<button class="btn" onclick="addScore(10)">A) Güzel olabilir</button>
+<button class="btn" onclick="addScore(20)">B) Mutlu oluruz</button>
+<button class="btn" onclick="addScore(30)">C) Beraber büyürüz</button>
+<button class="btn" onclick="addScore(40)">D) Sonsuza kadar yan yana…</button>
+
+<b>5) Onu özleyince ne yapıyorsun?</b>
+<button class="btn" onclick="addScore(10)">A) Bir şey yapmıyorum</button>
+<button class="btn" onclick="addScore(20)">B) Fotoğraflarına bakıyorum</button>
+<button class="btn" onclick="addScore(30)">C) Sesini hatırlıyorum</button>
+<button class="btn" onclick="addScore(40)">D) İçim gidiyor…</button>
+
+<p id="score" style="text-align:center;font-size:20px;margin-top:15px;">Puan: 0</p>
+<button class="btn" onclick="showResults()">Sonuçları Göster</button>
+<div id="resultBox"></div>
+<div id="noteForYou">❤️ <b>Ada seni çok seviyor Kerem…</b><br>“Kerem benim kalbimin en güzel yerinde” dedi.</div>
+</section>
+
+<section class="fade">
+<h2>❤️ İlişki Sevgi Yüzdesi</h2>
+<button class="btn" onclick="calculateLove()">Yüzdeyi Hesapla</button>
+<p id="percent">% </p>
+</section>
+
+<section class="fade">
+<h2>🎁 Triple Sürprizi</h2>
+<button class="btn" onclick="showTriple()">Aç bakalım…</button>
+<div id="triple">❤️ Seninle geçen her gün, üç kat daha değerli.</div>
+</section>
+
+<section class="fade">
+<h2>🔐 Gizli İkinci Sürpriz</h2>
+<button class="btn" onclick="secret2()">Gizliyi Aç</button>
+<div id="secret2">❤️ *Tribini bile seviyorum.*</div>
+</section>
+
+<section class="fade">
+<h2>💌 Sana Söylemek İstediklerim</h2>
+<button class="btn" onclick="showLoveNote()">Notu Oku</button>
+<div id="loveNote">Sevgilim… (metin burada)</div>
+</section>
+
+<section class="fade">
+<h2>😘 Küçük Sürpriz</h2>
+<div id="kissNote">💋 Sevgilin bu siteyi hazırlarken çok uğraştı… sana bir öpücük hak ediyor 😘</div>
+</section>
+</div>
+
+<script>
+function enterSite(){ document.getElementById("intro").style.display="none"; document.getElementById("main").classList.add("active"); document.getElementById("music").play(); }
+let score=0;
+function addScore(x){ score+=x; document.getElementById("score").innerText="Puan: "+score; }
+function showResults(){ const box=document.getElementById("resultBox"); box.style.display="block"; if(score<50){ box.style.background="#ff7a7a"; box.innerHTML="Aşk var ama yavaş ısınıyorsun gibi 😭❤️"; } else if(score<120){ box.style.background="#ff3f7a"; box.innerHTML="Bu sevgi ciddi… kalbin tamamen ona kilitli ❤️"; } else{ box.style.background="#ff006e"; box.innerHTML="🔥 AŞIRI AŞK UYARISI 🔥"; } document.getElementById("noteForYou").style.display="block"; }
+function calculateLove(){ const p=Math.floor(90+Math.random()*10); document.getElementById("percent").innerText="% "+p; }
+function showTriple(){ document.getElementById("triple").style.display="block"; }
+function secret2(){ document.getElementById("secret2").style.display="block"; }
+function showLoveNote(){ document.getElementById("loveNote").style.display="block"; }
+setInterval(()=>{ const heart=document.createElement("div"); heart.className="heart"; heart.innerHTML="❤️"; heart.style.left=Math.random()*100+"vw"; heart.style.fontSize=(20+Math.random()*20)+"px"; document.body.appendChild(heart); setTimeout(()=>heart.remove(),4000); },350);
+</script>
+
+</body>
+</html>
